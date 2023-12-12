@@ -13,6 +13,8 @@ let content;
 let d;
 let wait;
 let s
+let l;
+let r;
 
 let cnv
 
@@ -29,6 +31,8 @@ function setup() {
   select("#submit").mouseClicked(sendMessage);
   p = select('#loadtext')
   d = select('#memetext')
+  l = select('#left')
+  r = select('#right')
   //d.parent(cnv)
   s = 2
   imageMode(CENTER)
@@ -128,6 +132,8 @@ function draw() {
     wait.resize(400,400);
     image(wait,width/2, height/2)
     d.html('')
+    l.hide()
+    r.hide()
   }
  
  if (s == 1) {
@@ -137,6 +143,11 @@ function draw() {
     d.html(txt)
     d.position(0,0);
     p.html("AI-generated meme about '" + content +  "' be like")
+    l.show()
+    r.show()
   }
+  
+}
+
   
 }
