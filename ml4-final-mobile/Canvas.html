@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CCLab Final</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script&display=swap" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="libraries/p5.min.js"></script>
+
+  <style>
+    body {
+      background: url('https://pic4.zhimg.com/v2-70bf71c5f0d61104ee82882711ae5aa4_r.jpg?source=1940ef5c');
+      background-size: cover;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+    #input {
+      display: flex;
+      transform: scale(0.9);
+      margin-top: 200px;
+    }
+
+
+    .button {
+      cursor: pointer;
+      border: none;
+      color: white;
+
+      width: 120px;
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #000000;
+      border-radius: 10px;
+
+    }
+
+    .buttons {
+      font-family: sans-serif;
+      font-weight: normal;
+      cursor: pointer;
+      border: none;
+      color: white;
+      width: 130px;
+
+      height: 40px;
+      font-size: 11px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #000000;
+      border-radius: 10px;
+
+    }
+
+    input {
+      width: 300px;
+      border-radius: 10px 0 0 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      margin: 50px 0;
+      border-right: none;
+      outline: none;
+      height: 42px;
+    }
+
+
+    .buttonList {
+      position: absolute;
+      left: 50%;
+      top: 110%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .list {
+      display: flex;
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+    .rating {
+      display: flex;
+      justify-content: space-between;
+      width: 60%;
+      margin: 20px;
+      margin-top: 0;
+    }
+
+    .star {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    .star:before {
+      content: '\2605';
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 20px;
+      color: #ddd;
+    }
+
+    .star.active:before {
+      color: #000000;
+    }
+  </style>
+
+</head>
+
+<body>
+  <script src="localsd.js"></script>
+  <script src="openai.js"></script>
+
+  <div id="parent">
+    <div id = "loadtext"></div>
+    <div id="canvasContainer">
+      <div id = "memetext"></div>
+    </div>
+      
+    <div class="buttonList">
+      <div class="list">
+        <input type="button" value="Regenerate" id="Regenerate" class="buttons">
+        <input type="button" value="Save" id="Save" class="buttons">
+        <div class="buttons" id="Generate">
+          Generate another one
+        </div>
+      </div>
+
+      <p>
+        Rate it!
+      </p>
+      <div class="rating">
+        <span class="star" data-value="1"></span>
+        <span class="star" data-value="2"></span>
+        <span class="star" data-value="3"></span>
+        <span class="star" data-value="4"></span>
+        <span class="star" data-value="5"></span>
+      </div>
+    </div>
+  </div>
+  <div id="input">
+    <input type="text" id="content" placeholder="The content of the meme">
+    <input type="button" value="Submit" id="submit" class="button" style="border-radius: 0 10px 10px 0;">
+
+
+  </div>
+
+  <script src="sketch.js"></script>
+  <script>
+
+    let submit = document.getElementById('submit')
+    let input = document.getElementById('input')
+    let parent = document.getElementById('parent')
+    let Generate = document.getElementById('Generate')
+    submit.addEventListener('click', function () {
+      input.style.display = 'none'
+      parent.style.display = 'block'
+    })
+    Generate.addEventListener('click', function () {
+      window.location.reload()
+    })
+
+    const stars = document.querySelectorAll('.star');
+
+    for (let i = 0; i < stars.length; i++) {
+      stars[i].addEventListener('click', function () {
+        const value = this.getAttribute('data-value');
+
+        for (let j = 0; j < stars.length; j++) {
+          if (j < value) {
+            stars[j].classList.add('active');
+          } else {
+            stars[j].classList.remove('active');
+          }
+        }
+      });
+    }
+
+
+
+    
+
+  </script>
+</body>
+
+</html>

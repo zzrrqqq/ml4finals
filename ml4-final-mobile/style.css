@@ -1,0 +1,50 @@
+#parent {
+    position:absolute;
+    left: 50%;
+    top: 40%;
+    transform:translate(-50%, -50%) scale(0.9);
+    height: 500px;
+   
+    font-family: myFont;
+    font-size: 20px;
+    display: none;
+    
+}
+
+#left {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+#canvasContainer
+{
+    position:absolute;
+    height: 420px;
+    width: 420px;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%, -50%);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 10px solid #969696;
+}
+
+#right {
+    position: absolute;
+    right: 0px;
+    top: 0px
+}
+
+div{
+    width: 400px;
+    font-size: 30px;
+    font-family: myFont;
+    -webkit-text-stroke-width: thin;
+    -webkit-text-fill-color: white;
+  }
+  
+  @font-face {
+      font-family: myFont;
+      src: url(impact.ttf);
+  }
