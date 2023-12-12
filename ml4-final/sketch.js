@@ -136,7 +136,7 @@ function draw() {
     fill(0)
     d.html(txt)
     d.position(0,0);
-    //p.html("AI-generated meme about '" + content +  "' be like")
+    p.html("AI-generated meme about '" + content +  "' be like")
   }
   
 }
